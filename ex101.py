@@ -1,19 +1,17 @@
-from date import datetime
-
-
-def status():
-    birth = int(input('Em que ano você nasceu? '))
-    age = date.today().year - birth
+def status(year):
+    from datetime import datetime
+    age = datetime.today().year - year
 
     if age < 16:
-        return ("Não pode votar. ")
+        return f'Com idade {age} não pode votar. '
 
-    elif age >= 16 and age < 18 or age >= 70:
-        return ("Voto opcional. ")
+    elif 16 >= age < 18 or age >= 65:
+        return f'Com idade {age} o voto é opcional. '
 
     else:
-        return ("Voto obrigatório. ")
+        return f'Com idade {age} o voto é obrigatório. '
 
 
 print('-' * 30)
-situation = verificarstatus()
+birth = int(input('Em que ano você nasceu? '))
+print(status(birth))
